@@ -1,0 +1,48 @@
+<div class="m-3">
+    <div class="mb-5"><h1 class="mb-2">Proyecto Inteligencia artificial</h1>
+    <p>Este proyecto hace uso de Inteligencia artificial para determinar a que
+        categoria pertenece un objeto cuando se le envia una imagen del mismo</p>
+    <p>La IA esta programada en Python y se accede a la misma por medio de una API</p></div>
+
+    <h4 *ngIf="showResponse" class="text-center mb-2">{{response}}</h4>
+    <form [formGroup]="form" (ngSubmit)="consultarIA()">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Elija la imagen para consultar con la IA</label>
+            <input class="form-control" formControlName="file" accept=".jpg, .jpeg, .png" type="file" [multiple]="true"
+                (change)="subirArchivo($event)" (cancel)="touchInputFile()">
+            <div *ngIf="f['file']?.touched">
+
+                <div *ngIf="filesInfo.length==0">
+                    <small class="text-danger text-center fs-5 fw-bold">
+                        La imagen es obligatoria.
+                    </small>
+                    <hr>
+                </div>
+
+                <div>
+                    <div *ngFor="let file of filesInfo">
+                        <small>{{ file.name }} {{file.size}}</small>
+                        <small class="text-danger fs-5 fw-bold" *ngIf="!file.isValidExtension"> EXTENSION NO VÁLIDA</small>
+                        <small class="text-danger fs-5 fw-bold" *ngIf="!file.isValidSize"> TAMAÑO NO VÁLIDO</small>
+                        <hr class="mt-1 mb-0">
+                    </div>
+
+                    <div *ngIf="!isValidUpload()" class="text-danger fs-5 fw-bold">
+                        Los archivos permitidos son de tipo jpg, jpeg y png. Además, deben tener como tamaño maximo 10
+                        mb
+                        <hr>
+                    </div>
+
+                    <div *ngIf="filesInfo.length > 1">
+                        <small class="text-danger fs-5 fw-bold">
+                            La cantidad de archivos debe ser igual a 1.
+                        </small>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg w-100" type="submit"
+            [disabled]="!form.valid || !isValidUpload() || filesInfo.length > 1">Traer Resultado</button>
+    </form>
+</div>
