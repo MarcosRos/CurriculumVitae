@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IaComponent } from './components/ia/ia.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerfilComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    IaComponent
   ],
   imports: [
     HttpClientModule,
