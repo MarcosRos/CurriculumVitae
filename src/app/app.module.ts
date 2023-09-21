@@ -8,13 +8,15 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IaComponent } from './components/ia/ia.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerfilComponent,
     ProyectosComponent,
-    IaComponent
+    IaComponent,
+    HeaderComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="text-center mb-2">
+        <h1>Portfolio</h1>
+        <p>Aqui se muestran algunos proyectos desarrollados por mi que puede probar en esta misma pagina.</p>
+    </div>
+
+    <div class="contenedor-cards row">
+        <div class="card-proyecto col-5 offset-2" (click)="goTo(item.ruta)" (mouseenter)="onHover(i)"
+            (mouseleave)="onLeave(i)" *ngFor="let item of proyectos; let i = index" id="{{i}}">
+            <h2>{{item.titulo}}</h2>
+            <i class="fas fa-arrow-right"></i>
+            <p class="texto">{{item.fecha}}</p>
+            <div class="pic"></div>
+            <div class="social">
+                <!-- <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-twitter"></i>
+                  <i class="fab fa-instagram"></i>
+                  <i class="fab fa-github"></i> -->
+                <p [ngClass]="{'descripcion': (desc || i != indice)  , 'desc': (!desc && i == indice)  }">
+                    {{item.descripcion}}</p>
+            </div>
+            <button (click)="goTo(item.ruta)"></button>
+        </div>
+    </div>
+    <!-- <div class="card col-4" *ngFor="let item of proyectos">
+            <img src="assets/Perfil.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.titulo}}</h5>
+                <p class="card-text">{{item.descripcion}}</p>
+                <a href="{{item.ruta}}" class="btn btn-primary">Ver Proyecto</a>
+            </div>
+        </div> -->
+</div>
